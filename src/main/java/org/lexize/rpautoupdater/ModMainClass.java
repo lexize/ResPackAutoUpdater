@@ -2,9 +2,15 @@ package org.lexize.rpautoupdater;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mojang.brigadier.Command;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
+import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
 
+import net.minecraft.client.network.ClientCommandSource;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,6 +37,16 @@ public class ModMainClass implements ModInitializer {
 	public static File respackDir;
 	@Override
 	public void onInitialize() {
+		Command<FabricClientCommandSource> command = context -> {
+			update();
+			return 0;
+		};
+		LiteralArgumentBuilder<FabricClientCommandSource> lit = ClientCommandManager.literal("aureload").requires(source -> true).executes(command);
+		ClientCommandManager.DISPATCHER.register(lit);
+		update();
+	}
+
+	public static void update() {
 		//Get client instance
 		MinecraftClient mc = MinecraftClient.getInstance();
 
@@ -48,10 +64,10 @@ public class ModMainClass implements ModInitializer {
 					ZipFile zipFile = new ZipFile(pack);
 					log(Level.INFO, "Opened \"%s\". Starting analyzing".formatted(packName));
 					//Get MCMETA file of pack
-					ZipEntry mcmeta = zipFile.getEntry("check_url_file.json");
+					ZipEntry mcmeta = zipFile.getEntry("update_data.json");
 					//If not found
 					if (mcmeta == null) {
-						log(Level.ERROR, "\"check_url_file.json\" doen't found. Closing %s".formatted(packName));
+						log(Level.ERROR, "\"update_data.json\" doen't found. Closing %s".formatted(packName));
 						zipFile.close();
 					}
 					//If found
