@@ -6,6 +6,9 @@ Mod checking version from json file from link, then check version from .zip, and
 ## Can author download exploit in your pc with this mod?
 Literally no. But she/he can put zip bomb into pack... And this is doesn't under my control, sorry. So, download packs only from places you trust :)
 
+## Can you update respacks right without restarting game?
+Yes! Just type `/aureload` in your chat!
+
 # For Authors
 ## Pack configuration
 #### Does mod supports folder packs?
