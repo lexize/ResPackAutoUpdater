@@ -48,10 +48,10 @@ public class ModMainClass implements ModInitializer {
 					ZipFile zipFile = new ZipFile(pack);
 					log(Level.INFO, "Opened \"%s\". Starting analyzing".formatted(packName));
 					//Get MCMETA file of pack
-					ZipEntry mcmeta = zipFile.getEntry("pack.mcmeta");
+					ZipEntry mcmeta = zipFile.getEntry("check_url_file.json");
 					//If not found
 					if (mcmeta == null) {
-						log(Level.ERROR, "\"pack.mcmeta\" doen't found. Closing %s".formatted(packName));
+						log(Level.ERROR, "\"check_url_file.json\" doen't found. Closing %s".formatted(packName));
 						zipFile.close();
 					}
 					//If found
