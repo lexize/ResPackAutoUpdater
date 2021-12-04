@@ -6,12 +6,12 @@ Mod checking version from json file from link, then check version from .zip, and
 ## Can author download exploit in your pc with this mod?
 Literally no. But she/he can put zip bomb into pack... And this is doesn't under my control, sorry. So, download packs only from places you trust :)
 
-#For Authors
+#F or Authors
 ## Pack configuration
-####Does mod supports folder packs?
+#### Does mod supports folder packs?
 *No.*
 
-####Configuring
+#### Configuring
 To make resource pack updatable, you need to create `update_data.json` file in your pack.
 
 Fields of `update_data.json`:
