@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "respackautoupdater",
+  "version": "${version}",
+
+  "name": "AutoUpdater",
+  "description": "Mod, used to update resource packs without that boring checking every site with path. One mod, one pack.mcmeta schema, one downloader.",
+  "authors": [
+    "Lexize"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/lexize/ResPackAutoUpdater"
+  },
+
+  "license": "MIT",
+  "icon": "assets/respackautoupdater/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "org.lexize.rpautoupdater.ModMainClass"
+    ]
+  },
+  "mixins": [
+    "respackautoupdater.mixins.json"
+  ],
+
+  "depends": {},
+  "suggests": {}
+}
